@@ -1,0 +1,12 @@
+<%= form_for @gambar, :html=> {:multipart => true} do|f| %>
+<%= f.label :title %>
+</br>
+<%= f.text_field :title %>
+<%= @gambar.errors[:title].first unless @gambar.errors[:gambar].blank? %>
+ </br>
+<%= f.file_field :lokasi %>
+<%= @gambar.errors[:lokasi].first unless @gambar.errors[:gambar].blank? %>
+
+</br>
+<%= f.submit :submit %>
+<% end %>

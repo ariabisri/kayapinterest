@@ -1,0 +1,23 @@
+
+
+  <div class="row">
+
+  <% @gambar.each do |gambar| %>
+    <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+    <img class="img-rounded" style="width:171px;height:180px" <%= image_tag gambar.lokasi_url.to_s %> 
+      <div class="caption" align="center">
+        <h3 ><%=gambar.title%></h3>
+        
+        
+      </div>
+    </div>
+  </div>
+  <%end%>
+</div>
+
+
+
+
+
+
