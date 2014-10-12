@@ -14,5 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap.min
+//= require lightbox.min
+//= require bootstrap-lightbox
+//= require fancybox
+//= require jquery.turbolinks
 //= require_tree .
+
+jQuery(function() {
+  $("a.fancybox").fancybox();
+});
 

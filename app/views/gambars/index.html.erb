@@ -1,22 +1,45 @@
 
+<%= link_to "Show mah Fancybox!", "#hello", class: "fancybox" %>
 
-  <div class="row">
-
-  <% @gambar.each do |gambar| %>
-    <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-    <img class="img-rounded" style="width:171px;height:180px" <%= image_tag gambar.lokasi_url.to_s %> 
-      <div class="caption" align="center">
-        <h3 ><%=gambar.title%></h3>
-        
-        
-      </div>
-    </div>
+<div style="display:none;">
+  <div id="hello">
+  Hello world!
   </div>
-  <%end%>
 </div>
 
 
+
+<div class="row">
+<% @gambar.each do |gambar| %>
+<div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+     <%= link_to gambar.lokasi_url.to_s , :class=>'fancybox'  do %>
+
+    <%= image_tag gambar.lokasi_url(:thumb).to_s, :class=>'img-rounded'  %>
+    
+    <%end%>
+
+    <div class="caption" align="center">
+            <h3 ><%=gambar.title%></h3>
+            <span><%= link_to 'edit', edit_gambar_path(gambar.id) %></span>
+            <span>|</span>
+            <span><%= link_to 'delete', gambar_path(gambar.id), method: "DELETE", data: {confirm: 'Delete this data?'} %></span>
+        
+        
+      
+    </div>
+    </div>
+    </div>
+
+
+
+<%end%>
+
+
+ <!--
+
+  <% @gambar.each do |gambar| %>
+  <%end%>
 
 
 

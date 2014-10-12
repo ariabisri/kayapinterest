@@ -8,6 +8,7 @@ class GambarsController < ApplicationController
   end
 
   def edit
+    @gambar = Gambar.find_by_id(params[:id])
   end
 
   def create
@@ -20,6 +21,30 @@ class GambarsController < ApplicationController
       render 'new'
     end
 end
+
+def update
+  @gambar=Gambar.find_by_id(params[:id])
+  if @gambar.update(params_gambar)
+    flash[:notice]="success update"
+    redirect_to action: 'index';
+  else
+    flash[:error] = "Lengkapi Data"
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @gambar=Gambar.find_by_id(params[:id])
+    if @gambar.destroy
+      @gambar.remove_lokasi
+      flash[:notice]="success delete"
+      redirect_to action: 'index';
+    else
+       flash[:error] = "fails delete a records"
+    redirect_to action: 'index'
+  end
+end
+
 
 private
 def params_gambar
